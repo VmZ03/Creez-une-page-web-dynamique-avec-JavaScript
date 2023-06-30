@@ -47,6 +47,7 @@ function categorieEventListener() {
       const categoryId = event.srcElement.dataset.id;
       const filtered = app.projets.filter(function (projet) {
         if (categoryId !== "tous") {
+          //va chercher la reponse dans lapi pour trouver tout ceux avec le meme code pour les classifier
           return projet.categoryId === parseInt(categoryId, 10);
         } else {
           return projet;
@@ -106,6 +107,8 @@ function displayProjectsModal(data) {
   });
 }
 
+//suppression des travaux
+
 function deleteWork(event) {
   event.preventDefault();
   const project = parseInt(event.target.id);
@@ -114,6 +117,7 @@ function deleteWork(event) {
     method: "DELETE",
     headers: {
       "Access-Control-Allow-Origin": "*",
+      //va rechercher si on a lautorisatiojn pour le faire avec le token
       Authorization: "Bearer " + localStorage.getItem("token"),
     },
   }).then(function (response) {
@@ -137,7 +141,7 @@ function displayOn() {
     element.style.display = "none";
   });
 }
-
+//deconnexion enleve le tokken ou l'ajoute
 function logout() {
   localStorage.removeItem("token");
 }

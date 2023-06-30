@@ -21,8 +21,10 @@ formulaireLogin?.addEventListener("submit", async function (event) {
     body: chargeUtile,
   })
     .then(function (response) {
+      // code de reponse de lapi si bon
       if (response.status === 200) {
         return response.json();
+        // si pas bon affichage dun message d'erreur
       } else {
         LoginElement.innerText = "Mot de passe et/ou e-mail invalide.";
         document.getElementById("email").value = "";
@@ -38,3 +40,4 @@ formulaireLogin?.addEventListener("submit", async function (event) {
       }
     });
 });
+// tokken stocker dans le local storage

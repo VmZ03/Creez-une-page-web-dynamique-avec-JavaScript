@@ -1,5 +1,7 @@
 let modal = null;
 
+//ouvrir la modal
+
 openModal = function (e) {
   e.preventDefault();
   const target = document.querySelector(e.target.getAttribute("href"));
@@ -15,6 +17,8 @@ openModal = function (e) {
     .querySelector(".js-modal-stop")
     .addEventListener("click", stopPropagation);
 };
+
+//fermer la modal
 
 closeModal = function (event) {
   if (modal === null) return;
@@ -94,6 +98,7 @@ addNewPhoto = async function (event) {
     },
     body: formData,
   }).then(function (response) {
+    // code de retour pour reponse de lapi
     if (response.status === 201) {
       console.log(response);
       returnModal();
@@ -108,6 +113,7 @@ addNewPhoto = async function (event) {
       });
       document.getElementById("title").value = "";
       document.getElementById("selectCategory").value = "1";
+      //si pas bon message derreur
     } else {
       AddElement.innerText = "Erreur lors de l'ajout de la photo";
       return response.json();
