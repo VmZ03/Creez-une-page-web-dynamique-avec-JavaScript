@@ -3,7 +3,7 @@ const LoginElement = document.createElement("p");
 loginError.appendChild(LoginElement);
 
 const formulaireLogin = document.querySelector(".form-login");
-formulaireLogin.addEventListener("submit", async function (event) {
+formulaireLogin?.addEventListener("submit", async function (event) {
   event.preventDefault();
   const log = {
     email: event.target.querySelector("[name=email]").value,
